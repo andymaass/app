@@ -22,6 +22,17 @@ const loggedin = () => {
   );
 };
 
+const DisplayAnImage = () => {
+  return (
+    <Image
+        style={styles.logo}
+        source={{
+          uri: 'https://images.t3n.de/news/wp-content/uploads/2019/11/Wissen-Knowledge-Idee-Shutterstock.jpg?class=hero',
+        }}
+      />
+  );
+  };
+
 const Separator = () => <View style={styles.separator} />;
 
 
@@ -82,5 +93,9 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  logo: {
+    width: 66,
+    height: 58,
   },
 });
