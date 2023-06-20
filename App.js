@@ -27,7 +27,7 @@ const DisplayAnImage = () => {
     <Image
         style={styles.logo}
         source={{
-          uri: 'https://images.t3n.de/news/wp-content/uploads/2019/11/Wissen-Knowledge-Idee-Shutterstock.jpg?class=hero',
+          uri: 'https://blog.dgq.de/wp-content/uploads/2016/04/Kopf_Illustration-1.jpg',
         }}
       />
   );
