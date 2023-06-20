@@ -48,8 +48,12 @@ export default function App() {
     <Separator />
 
     <View>
-      <Text style={styles.title}>Willkommen in der Schullapp</Text>
-        <StatusBar style="auto" />
+    <Image
+        style={styles.logo}
+        source={{
+          uri: 'https://images.t3n.de/news/wp-content/uploads/2019/11/Wissen-Knowledge-Idee-Shutterstock.jpg?class=hero',
+        }}
+      />
     </View>
 
     <Separator />
