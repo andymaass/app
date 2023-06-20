@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   logo: {
-    width: 66,
-    height: 58,
+    width: 200,
+    height: 86,
   },
 });
