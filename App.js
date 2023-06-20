@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button, Text, SafeAreaView, View, Alert,} from 'react-native';
+import { StyleSheet, Button, Text, SafeAreaView, View, Alert, Image} from 'react-native';
 
 const startseite = () => {
  
