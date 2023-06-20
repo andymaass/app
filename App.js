@@ -22,7 +22,7 @@ const loggedin = () => {
   );
 };
 
-
+const Separator = () => <View style={styles.separator} />;
 
 
 export default function App() {
@@ -33,6 +33,13 @@ export default function App() {
       <Text style={styles.title}>Willkommen in der Schullapp</Text>
         <StatusBar style="auto" />
     </View>    
+
+    <Separator />
+
+    <View>
+      <Text style={styles.title}>Willkommen in der Schullapp</Text>
+        <StatusBar style="auto" />
+    </View>
 
     <Separator />
 
