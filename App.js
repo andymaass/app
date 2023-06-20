@@ -22,6 +22,13 @@ const loggedin = () => {
   );
 };
 
+const register = () => {
+ 
+  return(
+        <Text>login</Text>
+  );
+};
+
 const DisplayAnImage = () => {
   return (
     <Image
