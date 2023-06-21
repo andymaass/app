@@ -1,5 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Button, Text, SafeAreaView, View, Alert, Image} from 'react-native';
+import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+//Startseiten Komponente
+
 
 const Startseite = () => {
  
@@ -41,12 +46,19 @@ const Startseite = () => {
   );
 };
 
+
+//Login Komponente
+
+
 const Login = () => {
  
   return(
         <Text>login</Text>
   );
 };
+
+
+//Angemldet Komponente
 
 const Loggedin = () => {
  
@@ -55,12 +67,69 @@ const Loggedin = () => {
   );
 };
 
+
+//Registriert Komponente
+
+
 const Register = () => {
- 
-  return(
-        <Text>login</Text>
+  const [id, setId] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [birthdate, setBirthdate] = useState('');
+
+  const handleRegistration = async () => {
+    try {
+      // JSON-Objekt erstellen
+      const data = {
+        id: id,
+        username: username,
+        password: password,
+        name: name,
+        birthdate: birthdate
+      };
+
+      // Daten als JSON in Datei speichern
+      await AsyncStorage.setItem('Register.json', JSON.stringify(data));
+      alert('Registrierung erfolgreich!');
+    } catch (error) {
+      alert('Fehler beim Speichern der Daten.');
+    }
+  };
+
+  return (
+    <View>
+      <TextInput
+        placeholder="ID"
+        value={id}
+        onChangeText={setId}
+      />
+      <TextInput
+        placeholder="Benutzername"
+        value={username}
+        onChangeText={setUsername}
+      />
+      <TextInput
+        placeholder="Passwort"
+        value={password}
+        onChangeText={setPassword}
+      />
+      <TextInput
+        placeholder="Name"
+        value={name}
+        onChangeText={setName}
+      />
+      <TextInput
+        placeholder="Geburtsdatum"
+        value={birthdate}
+        onChangeText={setBirthdate}
+      />
+      <Button title="Registrieren" onPress={handleRegistration} />
+    </View>
   );
 };
+ 
+  
 
 const Separator = () => <View style={styles.separator} />;
 
