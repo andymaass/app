@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Autoauswahl</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <form>
+    <label for="autotyp">Autotyp:</label>
+    <select id="autotyp" name="autotyp" onchange="updateModelOptions()">
+      <option value="">Bitte auswählen</option>
+      <option value="vw">VW</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="opel">Opel</option>
+    </select>
+
+    <br><br>
+
+    <label for="modell">Modell:</label>
+    <select id="modell" name="modell" onchange="updateTuningTeileOptions()">
+      <option value="">Bitte auswählen</option>
+    </select>
+
+    <br><br>
+
+    <label for="tuningteile">Tuningteile:</label>
+    <select id="tuningteile" name="tuningteile">
+      <option value="">Bitte auswählen</option>
+    </select>
+  </form>
+
+  <script>
+    function updateModelOptions() {
+      var autotyp = document.getElementById("autotyp").value;
+      var modellSelect = document.getElementById("modell");
+
+      // Leere das Modell-Dropdown, bevor neue Optionen hinzugefügt werden
+      modellSelect.innerHTML = "<option value=''>Bitte auswählen</option>";
+
+      if (autotyp === "vw") {
+        var vwModelle = ["Golf", "Passat"];
+        addOptionsToSelect(vwModelle, modellSelect);
+      } else if (autotyp === "mercedes") {
+        var mercedesModelle = ["SLK", "CLK"];
+        addOptionsToSelect(mercedesModelle, modellSelect);
+      } else if (autotyp === "opel") {
+        var opelModelle = ["Manta", "Vectra"];
+        addOptionsToSelect(opelModelle, modellSelect);
+      }
+    }
+
+    function updateTuningTeileOptions() {
+      var autotyp = document.getElementById("autotyp").value;
+      var modell = document.getElementById("modell").value;
+      var tuningteileSelect = document.getElementById("tuningteile");
+
+      // Leere das Tuningteile-Dropdown, bevor neue Optionen hinzugefügt werden
+      tuningteileSelect.innerHTML = "<option value=''>Bitte auswählen</option>";
+
+      if (autotyp === "vw" && modell === "Golf") {
+        var vwGolfTuningteile = ["VW Golf Motor", "VW Golf Auspuff"];
+        addOptionsToSelect(vwGolfTuningteile, tuningteileSelect);
+      } else if (autotyp === "vw" && modell === "Passat") {
+        var vwPassatTuningteile = ["VW Passat Motor", "VW Passat Auspuff"];
+        addOptionsToSelect(vwPassatTuningteile, tuningteileSelect);
+      } else if (autotyp === "mercedes" && modell === "SLK") {
+        var mercedesSlkTuningteile = ["Mercedes SLK Motor", "Mercedes SLK Auspuff"];
+        addOptionsToSelect(mercedesSlkTuningteile, tuningteileSelect);
+      } else if (autotyp === "mercedes" && modell === "CLK") {
+        var mercedesClkTuningteile = ["Mercedes CLK Motor", "Mercedes CLK Auspuff"];
+        addOptionsToSelect(mercedesClkTuningteile, tuningteileSelect);
+      } else if (autotyp === "opel" && modell === "Manta") {
+        var opelMantaTuningteile = ["Opel Manta Motor", "Opel Manta Auspuff"];
+        addOptionsToSelect(opelMantaTuningteile, tuningteileSelect);
+      } else if (autotyp === "opel" && modell === "Vectra") {
+        var opelVectraTuningteile = ["Opel Vectra Motor", "Opel Vectra Auspuff"];
+        addOptionsToSelect(opelVectraTuningteile, tuningteileSelect);
+      }
+    }
+
+    function addOptionsToSelect(optionsArray, selectElement) {
+      for (var i = 0; i < optionsArray.length; i++) {
+        var option = document.createElement("option");
+        option.text = optionsArray[i];
+        selectElement.add(option);
+      }
+    }
+  </script>
+</body>
+</html>
