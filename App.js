@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button, Text, SafeAreaView, View, Alert, Image} from 'react-native';
+import { StyleSheet, Button, Text, TextInput, SafeAreaView, View, Alert, Image} from 'react-native';
 import React, { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
