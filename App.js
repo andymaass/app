@@ -4,7 +4,39 @@ import { StyleSheet, Button, Text, SafeAreaView, View, Alert, Image} from 'react
 const startseite = () => {
  
   return(
-        <Text>startseite</Text>
+    <View>
+    <Text style={styles.title}>Willkommen in der Schullapp</Text>
+      <StatusBar style="auto" />
+ 
+
+  <Separator />
+
+  
+  <Image
+      style={styles.logo}
+      source={{
+        uri: 'https://blog.dgq.de/wp-content/uploads/2016/04/Kopf_Illustration-1.jpg',
+      }}
+    />
+ 
+
+  <Separator />
+
+  
+    <Text style={styles.title}>
+      Hier kannst du dich anmelden oder registrieren.
+    </Text>
+    
+      <Button
+        title="Login"
+        onPress={() => Alert.alert('Left button pressed')}
+      />
+      <Button
+        title="Registrieren"
+        onPress={() => Alert.alert('Right button pressed')}
+      />
+  
+  </View>
   );
 };
 
@@ -47,39 +79,8 @@ export default function App() {
   return (
   <SafeAreaView style={styles.container}>
 
-    <View>
-      <Text style={styles.title}>Willkommen in der Schullapp</Text>
-        <StatusBar style="auto" />
-    </View>    
-
-    <Separator />
-
-    <View>
-    <Image
-        style={styles.logo}
-        source={{
-          uri: 'https://blog.dgq.de/wp-content/uploads/2016/04/Kopf_Illustration-1.jpg',
-        }}
-      />
-    </View>
-
-    <Separator />
-
-    <View>
-      <Text style={styles.title}>
-        Hier kannst du dich anmelden oder registrieren.
-      </Text>
-      <View style={styles.fixToText}>
-        <Button
-          title="Login"
-          onPress={() => Alert.alert('Left button pressed')}
-        />
-        <Button
-          title="Registrieren"
-          onPress={() => Alert.alert('Right button pressed')}
-        />
-    </View>
-    </View>
+  <startseite></startseite>
+    
   </SafeAreaView>
   );
 }
