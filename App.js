@@ -41,21 +41,21 @@ const Startseite = () => {
   );
 };
 
-const login = () => {
+const Login = () => {
  
   return(
         <Text>login</Text>
   );
 };
 
-const loggedin = () => {
+const Loggedin = () => {
  
   return(
         <Text>loggedin</Text>
   );
 };
 
-const register = () => {
+const Register = () => {
  
   return(
         <Text>login</Text>
@@ -65,11 +65,15 @@ const register = () => {
 const Separator = () => <View style={styles.separator} />;
 
 
+
+
+
+
 export default function App() {
   return (
   <SafeAreaView style={styles.container}>
 
-  <Startseite/>
+  <Register/>
     
   </SafeAreaView>
   );

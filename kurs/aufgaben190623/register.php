@@ -13,11 +13,11 @@ if ($conn->connect_error) {
 }
 
 // Überprüfen, ob alle Werte gesetzt und nicht leer sind
-if (isset($_POST['Benutzername']) && isset($_POST['Passwort']) && isset($_POST['Name']) && isset($_POST['Geburtsdatum'])) {
-    $benutzername = $_POST['Benutzername'];
-    $passwort = $_POST['Passwort'];
-    $name = $_POST['Name'];
-    $geburtsdatum = $_POST['Geburtsdatum'];
+if (isset($_Get['Benutzername']) && isset($_Get['Passwort']) && isset($_Get['Name']) && isset($_Get['Geburtsdatum'])) {
+    $benutzername = $_Get['Benutzername'];
+    $passwort = $_Get['Passwort'];
+    $name = $_Get['Name'];
+    $geburtsdatum = $_Get['Geburtsdatum'];
     $registriert = date("Y-m-d"); // Aktuelles Datum im MySQL-Format
 
     // Überprüfen, ob kein Wert leer ist
