@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Button, Text, SafeAreaView, View, Alert, Image} from 'react-native';
 
-const startseite = () => {
+const Startseite = () => {
  
   return(
     <View>
@@ -14,6 +14,7 @@ const startseite = () => {
   
   <Image
       style={styles.logo}
+  
       source={{
         uri: 'https://blog.dgq.de/wp-content/uploads/2016/04/Kopf_Illustration-1.jpg',
       }}
@@ -26,7 +27,7 @@ const startseite = () => {
     <Text style={styles.title}>
       Hier kannst du dich anmelden oder registrieren.
     </Text>
-    
+      
       <Button
         title="Login"
         onPress={() => Alert.alert('Left button pressed')}
@@ -61,17 +62,6 @@ const register = () => {
   );
 };
 
-const DisplayAnImage = () => {
-  return (
-    <Image
-        style={styles.logo}
-        source={{
-          uri: 'https://blog.dgq.de/wp-content/uploads/2016/04/Kopf_Illustration-1.jpg',
-        }}
-      />
-  );
-  };
-
 const Separator = () => <View style={styles.separator} />;
 
 
@@ -79,7 +69,7 @@ export default function App() {
   return (
   <SafeAreaView style={styles.container}>
 
-  <startseite></startseite>
+  <Startseite/>
     
   </SafeAreaView>
   );
@@ -97,10 +87,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 8,
   },
-  fixToText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   separator: {
     marginVertical: 8,
     borderBottomColor: '#737373',
@@ -109,5 +95,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 86,
+    
   },
 });
