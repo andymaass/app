@@ -79,13 +79,14 @@ const Register = () => {
  //alert("start");
  const getData = async () => {
   try {
-    let url = 'http://localhost:8000';
+    let url = 'http://localhost:8000/register.php';
     
     const response = await fetch(url);
     
     const json = await response.json();
     
-    setData(json.movies);
+    alert (json);
+    //setData(json.movies);
 
   } catch (error) {
     console.error(error);
