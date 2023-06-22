@@ -27,7 +27,8 @@ if (isset($_Get['Benutzername']) && isset($_Get['Passwort']) && isset($_Get['Nam
 
         // SQL-Abfrage ausführen
         if ($conn->query($sql) === TRUE) {
-            echo "Eintrag erfolgreich hinzugefügt";
+            echo "ok";
+
         } else {
             echo "Fehler beim Hinzufügen des Eintrags: " . $conn->error;
         }
