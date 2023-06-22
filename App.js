@@ -142,7 +142,10 @@ export default function App() {
   return (
   <SafeAreaView style={styles.container}>
 
+  <View>
+  <Text>register</Text>
   <Register/>
+  </View>  
     
   </SafeAreaView>
   );
