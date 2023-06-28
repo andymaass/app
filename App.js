@@ -51,11 +51,55 @@ const Startseite = () => {
 
 
 const Login = () => {
+
+  const [Benutzername, setBenutzername] = useState('');
+  const [Passwort, setPasswort] = useState('');
+
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
  
-  return(
-        <Text>login</Text>
-  );
+  const getData = async () => {
+    try {
+      let url = 'http://localhost/login.php?Bentzername=&Passwort=';
+      
+      const response = await fetch(url);
+      
+      const json = await response.json();
+      
+      alert (json);
+      
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  
+  getData();
+
+  console.log('Benutzername:', Benutzername);
+  console.log('Passwort:', Passwort);
 };
+
+return (
+  <View style={styles.container}>
+    <TextInput
+      style={styles.input}
+      placeholder="Benutzername"
+      value={Benutzername}
+      onChangeText={text => setBenutzername(text)}
+    />
+    <TextInput
+      style={styles.input}
+      placeholder="Passwort"
+      secureTextEntry
+      value={Passwort}
+      onChangeText={text => setPasswort(text)}
+    />
+    <Button title="Anmelden" onPress={getData} />
+  </View>
+);
+};
+
 
 
 //Angemldet Komponente
@@ -133,7 +177,7 @@ export default function App() {
 
   <View>
   <Text>register</Text>
-  <Register/>
+  <Login/>
   </View>  
     
   </SafeAreaView>
