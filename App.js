@@ -1,199 +1,165 @@
-import * as React from 'react';
-import { useState, useQuery,} from 'react';
-import { Button, View, Text, StyleSheet, TextInput, Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { UseGetData } from './src/getData';
-
-//Beginns here to React fetch myPHP
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Button, Text, ActivityIndicator, FlatList, SafeAreaView, View, Alert, Image} from 'react-native';
+import React, { useState, useEffect } from 'react';
 
 
-//Worklines here
+//Startseiten Komponente
 
-function HomeScreen({ navigation }) {
-  const getData = UseGetData;
 
-  return (
-    <View style={styles.layout}>
+const Startseite = () => {
+ 
+  return(
+    <View>
+    <Text style={styles.title}>Willkommen in der Schullapp</Text>
+      <StatusBar style="auto" />
+ 
 
-      <Image
-        style={styles.img}
-        source={{
-          uri: 'https://reactnative.dev/img/tiny_logo.png',
-        }} />
+  <Separator />
+
+  
+  <Image
+      style={styles.logo}
+  
+      source={{
+        uri: 'https://blog.dgq.de/wp-content/uploads/2016/04/Kopf_Illustration-1.jpg',
+      }}
+    />
+ 
+
+  <Separator />
+
+  
+    <Text style={styles.title}>
+      Hier kannst du dich anmelden oder registrieren.
+    </Text>
       
-      <Text style={styles.title}>Login</Text>
-      <Text> Login the Cat-Power </Text>
-
-      <TextInput
-        style={styles.textinput}
-        placeholder="Username"
-        onChangeText={_text => null} />
-      <TextInput
-        style={styles.textinput}
-        placeholder='Passwort'
-        secureTextEntry />
       <Button
-        title="Check in"
-        onPress={(getData) => navigation.navigate("Home/LogedIn")} 
-        />
-
-    </View>
+        title="Login"
+        onPress={() => Alert.alert('Left button pressed')}
+      />
+      <Button
+        title="Registrieren"
+        onPress={() => Alert.alert('Right button pressed')}
+      />
+  
+  </View>
   );
-} 
+};
 
-const LogedInScreen = ({navigation}) =>
- (
-  <View style={styles.layout}>
-    <Text style={styles.title}>"Your're logged in!"</Text>
+
+//Login Komponente
+
+
+const Login = () => {
+ 
+  return(
+        <Text>login</Text>
+  );
+};
+
+
+//Angemldet Komponente
+
+const Loggedin = () => {
+ 
+  return(
+        <Text>loggedin</Text>
+  );
+};
+
+
+//Registriert Komponente
+
+
+const Register = () => {
+ 
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+ //alert("start");
+ const getData = async () => {
+  try {
+    let url = 'http://localhost:8000/register.php';
     
-    <Button
-      title = "Go to Login"
-      onPress={() => navigation.navigate("Login")}
-    />
+    const response = await fetch(url);
     
-    <Text>"Type your Message"</Text>
-    <Button
-      title = "Go to Schülerverzeichnis"
-      onPress={() => navigation.navigate("Schülerverzeichnis")}
-    />
+    const json = await response.json();
+    
+    alert (json);
+    //setData(json.movies);
+
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoading(false);
+  }
+};
+
+getData();
+
+return (
+  <View>
+    {isLoading ? (
+      <ActivityIndicator />
+    ) : (
+      <View>
+           <FlatList
+        data={data}
+        keyExtractor={({id}) => id}
+        renderItem={({item}) => (
+          <Text>
+            {item.title}, {item.releaseYear}
+          </Text>
+        )}
+      />
+      </View>
+      
+    )}
   </View>
 );
+};
+  
 
-function StackLoginScreen () {
- return (
-  <View style={styles.layout}>
-    <Text style={styles.title}>"Willkommen im Schülerverzeichnis"</Text>
-    <Image
-      style={styles.img}
-      source={{
-        uri:"https://img.freepik.com/freie-ikonen/loggen-symbol_318-9896.jpg?w=740&t=st=1687766231~exp=1687766831~hmac=9cd386a99873146921b019d70b1bde8ac91743e53fe645aed8ab29e12f692f3d"
-       }}
-     />
-  </View>
+const Separator = () => <View style={styles.separator} />;
+
+
+
+
+
+
+export default function App() {
+  return (
+  <SafeAreaView style={styles.container}>
+
+  <View>
+  <Text>register</Text>
+  <Register/>
+  </View>  
+    
+  </SafeAreaView>
   );
 }
-const RegisterScreen = ({navigation}) => 
-( 
-<View style={styles.layout}> 
-    <Text style={styles.title}>SignUp</Text> 
-    <Text>Register now your Cat to keep informed!</Text>
-    <Button 
-      title ="klick here"
-      onPress = {() => navigation.navigate("Message")}
-    />
-  </View> 
-); 
 
-const MessageScreen = ({navigation}) => { 
-  const [name, setName] = useState(''); 
-  const [typed, setTyped] = useState('');
-  return ( 
-    <View style={{ 
-      flex: 1, 
-      alignContent: 'center',  
-      justifyContent: 'center',  
-      padding: 16, 
-    }}> 
-      <Text style={{ marginVertical: "8%" }}> 
-        {name ? `Hi ${name}!` : 'What is your name?'} 
-      </Text> 
-      <TextInput 
-        style={styles.textinput} 
-        placeholder="Your Name"
-        onChangeText={_text => null} 
-      /> 
-
-      <Text style={{ marginVertical: 16 }}> 
-    {typed ? `Hi ${typed}! - Miau` : 'What is your Cat-Power Name'} 
-   </Text> 
-   <TextInput 
-   style={styles.textinput} 
-   placeholder="Your Name here"
-   onChangeText={setTyped} 
-   /> 
-
-    </View> 
-  ); 
-}; 
-
-//HERE BEGINS
-
-
-//HERE ENDS
-const LoginStack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator(); 
-const RegisterStack = createNativeStackNavigator();
-
-
-export const AppNavigator = () => {
-  return (
- 	<NavigationContainer>
-	  <Tab.Navigator screenOptions={{ headerShown: false }}> 
-	  
-		  <Tab.Screen name="Login">
-			{() => (
-			  <LoginStack.Navigator>
-				<LoginStack.Screen 
-				  name="Login" 
-				  component={HomeScreen} 
-				/>												  			
-				
-        <LoginStack.Screen name="Home/LogedIn" component={LogedInScreen} />
-        <LoginStack.Screen name="Schülerverzeichnis" component={StackLoginScreen} />
-			  </LoginStack.Navigator>
-			)}
-		  </Tab.Screen>    
-		  <Tab.Screen name="Register">
-			{() => (
-			  <RegisterStack.Navigator>
-				  <RegisterStack.Screen name="Register" component={RegisterScreen} /> 
-				  <RegisterStack.Screen name="Message" component={MessageScreen} />
-			  </RegisterStack.Navigator>
-			)} 
-		  </Tab.Screen>
-		</Tab.Navigator>
-	  </NavigationContainer>
-	);
-}
-
- 
-const App = () => {
-  
-  return (  
-    <AppNavigator /> 
-  ); 
-}
-
-export default App; 
-
-
-const styles = StyleSheet.create({ 
-
-  layout: { 
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-  }, 
-
-  title: { 
-    fontSize: 32, 
-    marginBottom: 16, 
-  }, 
-  textinput: {
-    padding: 8,
-    borderWidth: 1,
-    backgroundColor: 'beige',
-    // backgroundColor: '#f5f5f5'
-  },
-  img: {
-    width: 250,
-    height: 200,
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 16,
+    backgroundColor: '#fff',
+    alignItems: 'center',
     justifyContent: 'center',
-   
-  }
-
-}); 
-
- 
+  },
+  title: {
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  logo: {
+    width: 200,
+    height: 86,
+    
+  },
+});
