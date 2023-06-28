@@ -176,7 +176,7 @@ export default function App() {
   <SafeAreaView style={styles.container}>
 
   <View>
-  <Text>register</Text>
+  <Text>Login</Text>
   <Login/>
   </View>  
     
