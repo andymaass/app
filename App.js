@@ -60,8 +60,13 @@ const Login = () => {
  
   const getData = async () => {
     try {
-      let url = 'http://localhost/login.php?Bentzername=&Passwort=';
       
+      let Passwort='';
+      
+      let url = 'http://localhost/login.php?Bentzername='+Benutzername+'&Passwort='+Passwort;
+      console.log (url)
+      
+
       const response = await fetch(url);
       
       const json = await response.json();
@@ -74,6 +79,7 @@ const Login = () => {
       setLoading(false);
     }
   
+
   getData();
 
   console.log('Benutzername:', Benutzername);
@@ -85,15 +91,13 @@ return (
     <TextInput
       style={styles.input}
       placeholder="Benutzername"
-      value={Benutzername}
-      onChangeText={text => setBenutzername(text)}
+      onChangeText={e => setBenutzername(e.target.value)}
     />
     <TextInput
       style={styles.input}
       placeholder="Passwort"
       secureTextEntry
-      value={Passwort}
-      onChangeText={text => setPasswort(text)}
+      onChangeText={e => setPasswort(e.target.value)}
     />
     <Button title="Anmelden" onPress={getData} />
   </View>
