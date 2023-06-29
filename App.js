@@ -62,15 +62,15 @@ const Login = () => {
     try {
       
       
-      let url = 'http://localhost/login.php?Bentzername='+Benutzername+'&Passwort='+Passwort;
+      let url = 'http://localhost/login.php?Benutzername='+Benutzername+'&Passwort='+Passwort;
       console.log (url)
       
 
       const response = await fetch(url);
       
       const json = await response.json();
+      console.log(json);
       
-      alert (json);
       
     } catch (error) {
       console.error(error);
@@ -78,8 +78,6 @@ const Login = () => {
       setLoading(false);
     }
   
-
-  getData();
 
   };
 
