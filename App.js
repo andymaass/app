@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Button, Text, ActivityIndicator, FlatList, SafeAreaView, View, Alert, Image} from 'react-native';
+import { StyleSheet, Button, Text, TextInput, ActivityIndicator, FlatList, SafeAreaView, View, Alert, Image} from 'react-native';
 import React, { useState, useEffect } from 'react';
 
 
@@ -61,7 +61,6 @@ const Login = () => {
   const getData = async () => {
     try {
       
-      let Passwort='';
       
       let url = 'http://localhost/login.php?Bentzername='+Benutzername+'&Passwort='+Passwort;
       console.log (url)
@@ -82,26 +81,26 @@ const Login = () => {
 
   getData();
 
-  console.log('Benutzername:', Benutzername);
-  console.log('Passwort:', Passwort);
-};
+  };
 
-return (
-  <View style={styles.container}>
-    <TextInput
-      style={styles.input}
-      placeholder="Benutzername"
-      onChangeText={e => setBenutzername(e.target.value)}
-    />
-    <TextInput
-      style={styles.input}
-      placeholder="Passwort"
-      secureTextEntry
-      onChangeText={e => setPasswort(e.target.value)}
-    />
-    <Button title="Anmelden" onPress={getData} />
-  </View>
-);
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Benutzername"
+        onChangeText={text => setBenutzername(text)}
+      />
+      
+      <TextInput
+        style={styles.input}
+        placeholder="Passwort"
+        secureTextEntry
+        onChangeText={text => setPasswort(text)}
+      />
+      <Button title="Anmelden" onPress={getData} />
+    </View>
+    
+  );console.log(Benutzername);
 };
 
 
