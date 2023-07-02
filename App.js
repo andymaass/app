@@ -118,50 +118,70 @@ const Loggedin = () => {
 
 const Register = () => {
  
+  const [Benutzername, setBenutzername] = useState('');
+  const [Passwort, setPasswort] = useState('');
+  const [Name, setName] = useState('');
+  const [Geburtsdatum, setGeburtsdatum] = useState('');
+
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-
- //alert("start");
- const getData = async () => {
-  try {
-    let url = 'http://localhost:8000/register.php';
-    
-    const response = await fetch(url);
-    
-    const json = await response.json();
-    
-    alert (json);
-    //setData(json.movies);
-
-  } catch (error) {
-    console.error(error);
-  } finally {
-    setLoading(false);
-  }
-};
-
-getData();
-
-return (
-  <View>
-    {isLoading ? (
-      <ActivityIndicator />
-    ) : (
-      <View>
-           <FlatList
-        data={data}
-        keyExtractor={({id}) => id}
-        renderItem={({item}) => (
-          <Text>
-            {item.title}, {item.releaseYear}
-          </Text>
-        )}
-      />
-      </View>
+ 
+  const getData = async () => {
+    try {
       
-    )}
-  </View>
-);
+      
+      let url = 'http://localhost/register.php?Benutzername='+Benutzername+'&Passwort='+Passwort+'&Name='+Name+'&Geburtsdatum'+Geburtsdatum;
+      console.log (url)
+      
+
+      const response = await fetch(url);
+      
+      const json = await response.json();
+      console.log(json);
+      
+      
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  
+
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Benutzername"
+        onChangeText={text => setBenutzername(text)}
+      />
+      
+      <TextInput
+        style={styles.input}
+        placeholder="Passwort"
+        secureTextEntry
+        onChangeText={text => setPasswort(text)}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Name"
+        secureTextEntry
+        onChangeText={text => setName(text)}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Geburtsdatum"
+        secureTextEntry
+        onChangeText={text => setGeburtsdatum(text)}
+      />
+
+      <Button title="Registrieren" onPress={getData} />
+    </View>
+    
+  );console.log(Benutzername);
 };
   
 
@@ -178,7 +198,7 @@ export default function App() {
 
   <View>
   <Text>Login</Text>
-  <Login/>
+  <Register/>
   </View>  
     
   </SafeAreaView>
