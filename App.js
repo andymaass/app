@@ -8,8 +8,30 @@ import React, { useState, useEffect } from 'react';
 
 const Startseite = () => {
  
+  const [isStartseite, setStartseite] = useState(true);
+  const toggleComponent = () => {
+    setStartseite(!isStartseite);
+  };
+
   return(
+    
     <View>
+     
+    {isStartseite ? (<Startseite/>) : (<Login/>) }
+
+    <Button
+      title = "Wechsel"
+      onPress={toggleComponent}
+      />
+    
+    {isStartseite ? (<Text>Startseite</Text>) : (<Text>Login</Text>)}
+
+    </View>
+
+    
+    /*  Alter Code
+    <View>
+
     <Text style={styles.title}>Willkommen in der Schullapp</Text>
       <StatusBar style="auto" />
  
@@ -43,6 +65,8 @@ const Startseite = () => {
       />
   
   </View>
+
+  */
   );
 };
 
@@ -194,7 +218,7 @@ export default function App() {
   <SafeAreaView style={styles.container}>
 
   <View>
-  <Text>Login</Text>
+  <Text>Startseite</Text>
   <Startseite/>
   </View>  
     
