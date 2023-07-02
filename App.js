@@ -26,47 +26,27 @@ const Startseite = () => {
     
     {isStartseite ? (<Text>Startseite</Text>) : (<Text>Login</Text>)}
 
-    </View>
 
-    
-    /*  Alter Code
-    <View>
+    <Separator />
 
     <Text style={styles.title}>Willkommen in der Schullapp</Text>
       <StatusBar style="auto" />
- 
+    
+    <Separator />
 
-  <Separator />
-
-  
-  <Image
+    <Image
       style={styles.logo}
   
       source={{
         uri: 'https://blog.dgq.de/wp-content/uploads/2016/04/Kopf_Illustration-1.jpg',
       }}
     />
- 
 
-  <Separator />
+    <Separator />
 
-  
-    <Text style={styles.title}>
-      Hier kannst du dich anmelden oder registrieren.
-    </Text>
-      
-      <Button
-        title="Login"
-        onPress={Login}
-      />
-      <Button
-        title="Registrieren"
-        onPress={Register}
-      />
-  
   </View>
 
-  */
+  
   );
 };
 
@@ -219,7 +199,7 @@ export default function App() {
 
   <View>
   <Text>Startseite</Text>
-  <Startseite/>
+  <Register/>
   </View>  
     
   </SafeAreaView>
