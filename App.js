@@ -35,11 +35,11 @@ const Startseite = () => {
       
       <Button
         title="Login"
-        onPress={() => Alert.alert('Left button pressed')}
+        onPress={Login}
       />
       <Button
         title="Registrieren"
-        onPress={() => Alert.alert('Right button pressed')}
+        onPress={Register}
       />
   
   </View>
@@ -195,7 +195,7 @@ export default function App() {
 
   <View>
   <Text>Login</Text>
-  <Register/>
+  <Startseite/>
   </View>  
     
   </SafeAreaView>
