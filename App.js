@@ -98,7 +98,7 @@ const Login = () => {
       <Button title="Anmelden" onPress={getData} />
     </View>
     
-  );console.log(Benutzername);
+  );
 };
 
 
@@ -160,28 +160,25 @@ const Register = () => {
       <TextInput
         style={styles.input}
         placeholder="Passwort"
-        secureTextEntry
         onChangeText={text => setPasswort(text)}
       />
 
       <TextInput
         style={styles.input}
         placeholder="Name"
-        secureTextEntry
         onChangeText={text => setName(text)}
       />
 
       <TextInput
         style={styles.input}
         placeholder="Geburtsdatum"
-        secureTextEntry
         onChangeText={text => setGeburtsdatum(text)}
       />
 
       <Button title="Registrieren" onPress={getData} />
     </View>
     
-  );console.log(Benutzername);
+  );
 };
   
 
