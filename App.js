@@ -8,24 +8,13 @@ import React, { useState, useEffect } from 'react';
 
 const Startseite = () => {
  
-  const [isStartseite, setStartseite] = useState(true);
-  const toggleComponent = () => {
-    setStartseite(!isStartseite);
-  };
+  
 
   return(
     
     <View>
      
-    {isStartseite ? (<Startseite/>) : (<Login/>) }
-
-    <Button
-      title = "Wechsel"
-      onPress={toggleComponent}
-      />
     
-    {isStartseite ? (<Text>Startseite</Text>) : (<Text>Login</Text>)}
-
 
     <Separator />
 
@@ -194,12 +183,48 @@ const Separator = () => <View style={styles.separator} />;
 
 
 export default function App() {
+
+  const [isStartseite, setStartseite] = useState(true);
+  const [isRegister, setRegister] = useState(false);
+  const [isLogin, setLogin] = useState(false);
+    
+  const toggleComponent = () => {
+    setStartseite(!isStartseite); 
+  
+  };
+  
+  const toggleComponent3 = () => {
+    setLogin(!isLogin);
+    setStartseite(false);
+    setRegister(false);
+  };
+
+
+  const toggleComponent2 = () => {
+    setRegister(!isRegister);
+    setStartseite(false);
+    setLogin(false);
+  };
+
+  
+
   return (
   <SafeAreaView style={styles.container}>
 
   <View>
   <Text>Startseite</Text>
-  <Register/>
+    {isStartseite ? (<Startseite/>) : ('') }
+    {isLogin ? (<Login/>) : ('') }
+    {isRegister ? (<Register/>) : ('') }
+
+    <Button
+      title = "Wechsel Login"
+      onPress={toggleComponent}
+      />
+    <Button
+      title = "Wechsel Register"
+      onPress={toggleComponent2}
+      />
   </View>  
     
   </SafeAreaView>
